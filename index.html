@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -130,7 +130,7 @@
 <canvas id="scene"></canvas>
 <div class="vignette"></div>
 
-<header class="brand"><b>ORRERY</b> · STOPWATCH<span>시간의 궤도</span></header>
+<header class="brand"><b>ORRERY</b> · STOPWATCH<span>THE ORBITS OF TIME</span></header>
 
 <main>
   <section class="stage" id="stage" aria-hidden="true"></section>
@@ -140,33 +140,33 @@
 
     <div class="readouts">
       <div class="ro">
-        <div class="ro-head"><span>수성</span><em>1 s</em></div>
-        <div class="ro-val"><span id="rv0">0.00</span><small>공전</small></div>
+        <div class="ro-head"><span>Mercury</span><em>1 s</em></div>
+        <div class="ro-val"><span id="rv0">0.00</span><small>rev</small></div>
         <div class="bar"><i id="rb0"></i></div>
       </div>
       <div class="ro">
-        <div class="ro-head"><span>지구</span><em>1 min</em></div>
-        <div class="ro-val"><span id="rv1">0.000</span><small>공전</small></div>
+        <div class="ro-head"><span>Earth</span><em>1 min</em></div>
+        <div class="ro-val"><span id="rv1">0.000</span><small>rev</small></div>
         <div class="bar"><i id="rb1"></i></div>
       </div>
       <div class="ro">
-        <div class="ro-head"><span>토성</span><em>1 h</em></div>
-        <div class="ro-val"><span id="rv2">0.0000</span><small>공전</small></div>
+        <div class="ro-head"><span>Saturn</span><em>1 h</em></div>
+        <div class="ro-val"><span id="rv2">0.0000</span><small>rev</small></div>
         <div class="bar"><i id="rb2"></i></div>
       </div>
     </div>
 
     <div class="controls">
-      <button id="lapBtn" class="btn" disabled>랩</button>
-      <button id="startBtn" class="btn primary">시작</button>
+      <button id="lapBtn" class="btn" disabled>LAP</button>
+      <button id="startBtn" class="btn primary">START</button>
     </div>
 
     <div class="laps" id="lapsWrap" hidden>
-      <div class="row head"><span>#</span><span>구간</span><span>누적</span></div>
+      <div class="row head"><span>#</span><span>Split</span><span>Total</span></div>
       <ol id="laps"></ol>
     </div>
 
-    <p class="hint"><kbd>Space</kbd>시작/정지 <kbd>L</kbd>랩 <kbd>R</kbd>재설정 · 마우스를 움직이면 시점이 바뀝니다</p>
+    <p class="hint"><kbd>Space</kbd>Start/Stop <kbd>L</kbd>Lap <kbd>R</kbd>Reset · Move the mouse to shift the view</p>
   </section>
 </main>
 
@@ -245,15 +245,15 @@
     if (running) {
       elapsed += performance.now() - startTime;
       running = false;
-      startBtn.textContent = '시작';
+      startBtn.textContent = 'START';
       startBtn.classList.remove('running');
-      lapBtn.textContent = '재설정';
+      lapBtn.textContent = 'RESET';
     } else {
       startTime = performance.now();
       running = true;
-      startBtn.textContent = '정지';
+      startBtn.textContent = 'STOP';
       startBtn.classList.add('running');
-      lapBtn.textContent = '랩';
+      lapBtn.textContent = 'LAP';
       lapBtn.disabled = false;
       if (!lapList.children.length) renderLaps();
     }
@@ -279,9 +279,9 @@
     lapList.innerHTML = '';
     lapsWrap.hidden = true;
     if (orrery) orrery.clearLaps();
-    startBtn.textContent = '시작';
+    startBtn.textContent = 'START';
     startBtn.classList.remove('running');
-    lapBtn.textContent = '랩';
+    lapBtn.textContent = 'LAP';
     lapBtn.disabled = true;
   }
 
